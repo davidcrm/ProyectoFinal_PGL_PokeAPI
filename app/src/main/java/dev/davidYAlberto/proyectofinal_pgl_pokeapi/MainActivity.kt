@@ -20,14 +20,14 @@ import dev.davidYAlberto.proyectofinal_pgl_pokeapi.views.HomeView
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val viewModel by viewModels<PokeViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        val viewModel:PokeViewModel by viewModels()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             ProyectoFinal_PGL_PokeAPITheme {
                 NavManager(viewModel = viewModel)
-
             }
         }
     }

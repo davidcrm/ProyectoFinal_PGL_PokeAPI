@@ -14,10 +14,10 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import dev.davidYAlberto.proyectofinal_pgl_pokeapi.model.PokeList
+import dev.davidYAlberto.proyectofinal_pgl_pokeapi.model.PokeDetail
 
 @Composable
-fun PokemonCard(pokemon: PokeList, onClick: ()->Unit){
+fun PokemonCard(pokemon: PokeDetail, onClick: ()->Unit){
     Card (
         shape= RoundedCornerShape(5.dp),
         modifier= Modifier
@@ -26,14 +26,14 @@ fun PokemonCard(pokemon: PokeList, onClick: ()->Unit){
             .clickable { onClick() }
     ) {
         Column {
-            MainImage (image=pokemon.sprite)
+            MainImage (image=pokemon.sprites.frontDefault)
         }
 
     }
 }
 @Composable
 fun MainImage(image:String){
-    val image = rememberAsyncImagePainter(model = image)
+    val image = rememberAsyncImagePainter(model = image) // Peticion async de coil
     Image (painter=image,
         contentDescription=null,
         contentScale= ContentScale.Crop,

@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import dev.davidYAlberto.proyectofinal_pgl_pokeapi.model.PokeDetail
 import dev.davidYAlberto.proyectofinal_pgl_pokeapi.model.PokeList
 import dev.davidYAlberto.proyectofinal_pgl_pokeapi.repository.PokeRepository
 import kotlinx.coroutines.Dispatchers
@@ -16,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PokeViewModel @Inject constructor(private val repo: PokeRepository): ViewModel() {
 
-    private val _pokemons = MutableStateFlow<List<PokeList>>(emptyList())
+    private val _pokemons = MutableStateFlow<List<PokeDetail>>(emptyList())
     val pokemons = _pokemons.asStateFlow()
     init {
         fetchPokemons()
@@ -26,7 +27,7 @@ class PokeViewModel @Inject constructor(private val repo: PokeRepository): ViewM
         viewModelScope.launch {
             withContext(Dispatchers.IO){
                 val result = repo.getPokemons()
-                _pokemons.value = result ?: emptyList()
+               _pokemons.value = result ?: emptyList()
             }
         }
     }
