@@ -9,3 +9,8 @@ data class PokeList(
     val name: String,
     val sprite: String
 )
+
+data class SinglePokeModel(
+    val name: String,
+    val sprite: String
+)

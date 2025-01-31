@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
+import dev.davidYAlberto.proyectofinal_pgl_pokeapi.navManager.NavManager
 import dev.davidYAlberto.proyectofinal_pgl_pokeapi.ui.theme.ProyectoFinal_PGL_PokeAPITheme
 import dev.davidYAlberto.proyectofinal_pgl_pokeapi.viewModel.PokeViewModel
 import dev.davidYAlberto.proyectofinal_pgl_pokeapi.views.HomeView
@@ -25,7 +26,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ProyectoFinal_PGL_PokeAPITheme {
-                    HomeView(viewModel = viewModel )
+                NavManager(viewModel = viewModel)
+
             }
         }
     }
