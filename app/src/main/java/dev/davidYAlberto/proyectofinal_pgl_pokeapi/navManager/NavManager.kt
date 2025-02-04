@@ -22,7 +22,8 @@ fun NavManager(viewModel: PokeViewModel){
                 type = NavType.IntType
             }
         )){
-            DetailView(viewModel, navController)
+            val id = it.arguments?.getInt("id")?:0
+            DetailView(viewModel, navController, id)
         }
     }
 }

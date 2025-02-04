@@ -25,4 +25,11 @@ class PokeRepository @Inject constructor(private val pokeAPI: PokeAPI) {
             pokemonResponse.body()!!
         }
     }
+
+    suspend fun getPokemonsById(id: Int): PokeDetail? {
+        val response = pokeAPI.getPokemon(id)
+        if (!response.isSuccessful) return null
+        val pokemon = response.body()
+        return pokemon
+    }
 }

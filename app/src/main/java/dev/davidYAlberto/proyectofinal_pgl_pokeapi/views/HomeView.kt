@@ -16,16 +16,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import dev.davidYAlberto.proyectofinal_pgl_pokeapi.components.MainTopBar
 import dev.davidYAlberto.proyectofinal_pgl_pokeapi.components.PokemonCard
-import dev.davidYAlberto.proyectofinal_pgl_pokeapi.data.PokeAPI
-import dev.davidYAlberto.proyectofinal_pgl_pokeapi.repository.PokeRepository
 import dev.davidYAlberto.proyectofinal_pgl_pokeapi.util.Constants.Companion.CUSTOM_BLACK
 import dev.davidYAlberto.proyectofinal_pgl_pokeapi.viewModel.PokeViewModel
 
 @Composable
 fun HomeView(viewModel: PokeViewModel, navController: NavController){
-    Scaffold(modifier = Modifier.fillMaxSize()) {
-        ContentHomeView(viewModel = viewModel, pad = it, navController = navController)
+    Scaffold(
+        topBar= {
+            MainTopBar(title = "POKEMONS", showBackButton = false) {
+            }
+        }
+    ){
+        ContentHomeView(pad = it, viewModel = viewModel, navController = navController)
     }
 }
 
@@ -40,7 +44,7 @@ fun ContentHomeView (viewModel:PokeViewModel, pad: PaddingValues, navController:
     ) {
         items(pokemons) { item ->
             PokemonCard(item) {
-                navController.navigate("Home")
+                navController.navigate("DetailView/${item.id}")
             }
             Text(
                 text = item.name,
