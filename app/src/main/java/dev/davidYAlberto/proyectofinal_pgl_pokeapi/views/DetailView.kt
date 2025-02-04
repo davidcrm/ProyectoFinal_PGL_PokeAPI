@@ -42,11 +42,12 @@ fun ContentDetailView(pad: PaddingValues, viewModel: PokeViewModel, id:Int){
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-        .fillMaxSize()
-        .padding(pad)
+            .fillMaxSize()
+            .padding(pad)
     )
     {
         PokemonElevatedCard(pokemon = pokemon)
+        MetaWebsite(url = "https://www.wikidex.net/wiki/" + pokemon.name)
     }
 
 }

@@ -1,5 +1,7 @@
 package dev.davidYAlberto.proyectofinal_pgl_pokeapi.components
 
+import android.content.Intent
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -13,6 +15,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
@@ -30,6 +34,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -127,6 +132,27 @@ fun PokemonElevatedCard(pokemon: PokeState) {
                 )
                 MainImage(image = pokemon.sprite)
             }
+        }
+    }
+}
+@Composable
+fun MetaWebsite(url: String){
+    val context= LocalContext.current
+    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+    Column {
+        Text(text="METASCORE",
+            color= Color.White,
+            fontWeight = FontWeight.Bold,
+            fontSize = 30.sp,
+            modifier=Modifier
+                .padding(top=10.dp, bottom=10.dp)
+        )
+        Button(onClick={context.startActivity(intent)}, colors= ButtonDefaults.buttonColors(
+            contentColor = Color.White,
+            containerColor = Color.Gray
+        )
+        ){
+            Text(text="Sitio Web")
         }
     }
 }
